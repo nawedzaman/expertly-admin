@@ -13,6 +13,7 @@ import authProvider from './authProvider';
 import categories from './categories';
 import { Dashboard } from './dashboard';
 import dataProviderFactory from './dataProvider';
+import dataProvider from './dataProvider/customDataProvider'
 import englishMessages from './i18n/en';
 import invoices from './invoices';
 import { Layout, Login } from './layout';
@@ -21,6 +22,9 @@ import products from './products';
 import reviews from './reviews';
 import Segments from './segments/Segments';
 import visitors from './visitors';
+import courses from './courses';
+import users from './users';
+import enrolls from './enrolls';
 import { themes, ThemeName } from './themes/themes';
 
 const i18nProvider = polyglotI18nProvider(
@@ -38,7 +42,6 @@ const i18nProvider = polyglotI18nProvider(
         { locale: 'fr', name: 'Français' },
     ]
 );
-
 const store = localStorageStore(undefined, 'ECommerce');
 
 const App = () => {
@@ -48,9 +51,7 @@ const App = () => {
     return (
         <Admin
             title=""
-            dataProvider={dataProviderFactory(
-                process.env.REACT_APP_DATA_PROVIDER || ''
-            )}
+            dataProvider={dataProvider}
             store={store}
             authProvider={authProvider}
             dashboard={Dashboard}
@@ -65,16 +66,19 @@ const App = () => {
             <CustomRoutes>
                 <Route path="/segments" element={<Segments />} />
             </CustomRoutes>
-            <Resource name="customers" {...visitors} />
-            <Resource
+            {/* <Resource name="customers" {...visitors} /> */}
+            {/* <Resource
                 name="commands"
                 {...orders}
                 options={{ label: 'Orders' }}
-            />
+            /> */}
             <Resource name="invoices" {...invoices} />
             <Resource name="products" {...products} />
             <Resource name="categories" {...categories} />
             <Resource name="reviews" {...reviews} />
+            <Resource name="courses" {...courses} />
+            <Resource name="users" {...users} />
+            <Resource name="enrolls" {...enrolls} />
         </Admin>
     );
 };

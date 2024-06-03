@@ -56,7 +56,7 @@ const Menu = ({ dense = false }: MenuProps) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to="/commands"
+                    to="/enrolls"
                     state={{ _scrollToTop: true }}
                     primaryText={translate(`resources.commands.name`, {
                         smart_count: 2,
@@ -82,7 +82,7 @@ const Menu = ({ dense = false }: MenuProps) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to="/products"
+                    to="/courses"
                     state={{ _scrollToTop: true }}
                     primaryText={translate(`resources.products.name`, {
                         smart_count: 2,
@@ -108,7 +108,7 @@ const Menu = ({ dense = false }: MenuProps) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to="/customers"
+                    to="/users"
                     state={{ _scrollToTop: true }}
                     primaryText={translate(`resources.customers.name`, {
                         smart_count: 2,

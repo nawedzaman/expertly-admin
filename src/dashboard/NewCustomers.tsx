@@ -25,7 +25,7 @@ const NewCustomers = () => {
 
     return (
         <ListBase
-            resource="customers"
+            resource="users"
             filter={{
                 has_ordered: true,
                 first_seen_gte: aMonthAgo.toISOString(),
@@ -35,7 +35,7 @@ const NewCustomers = () => {
             disableSyncWithLocation
         >
             <CardWithIcon
-                to="/customers"
+                to="/users"
                 icon={CustomerIcon}
                 title={translate('pos.dashboard.new_customers')}
                 subtitle={
@@ -43,7 +43,7 @@ const NewCustomers = () => {
                 }
             >
                 <SimpleList<Customer>
-                    primaryText="%{first_name} %{last_name}"
+                    primaryText="%{fullName}"
                     leftAvatar={customer => (
                         <Avatar
                             src={`${customer.avatar}?size=32x32`}
@@ -55,7 +55,7 @@ const NewCustomers = () => {
                 <Button
                     sx={{ borderRadius: 0 }}
                     component={Link}
-                    to="/customers"
+                    to="/users"
                     size="small"
                     color="primary"
                 >

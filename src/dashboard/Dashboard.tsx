@@ -126,7 +126,7 @@ const Dashboard = () => {
                         <NbNewOrders value={nbNewOrders} />
                     </div>
                     <div style={styles.singleCol}>
-                        <OrderChart orders={recentOrders} />
+                        {/* <OrderChart orders={recentOrders} /> */}
                     </div>
                     <div style={styles.singleCol}>
                         <PendingOrders orders={pendingOrders} />
@@ -134,7 +134,7 @@ const Dashboard = () => {
                 </div>
                 <div style={styles.rightCol}>
                     <div style={styles.flex}>
-                        <PendingReviews />
+                        {/* <PendingReviews /> */}
                         <Spacer />
                         <NewCustomers />
                     </div>

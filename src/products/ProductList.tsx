@@ -38,7 +38,7 @@ const ProductList = () => {
                 )}
             </FilterContext.Provider>
             <Box display="flex">
-                <Aside />
+                {/* <Aside /> */}
                 <Box width={isSmall ? 'auto' : 'calc(100% - 16em)'}>
                     <ImageList />
                     <Pagination rowsPerPageOptions={[12, 24, 48, 72]} />
