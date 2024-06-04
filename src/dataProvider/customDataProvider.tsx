@@ -5,7 +5,39 @@ import axios from 'axios';
 const token = localStorage.getItem('authToken');
 const apiUrl = 'https://expertly.onrender.com/admin';
 const httpClient = fetchUtils.fetchJson;
+const uploadFile = async (file) => {
+  try {
+    const response = await axios.get(
+      `${apiUrl}/presigned-url?filename=${file.title}`
+    ); // Replace with your API endpoint
+    const presignedUrl = response.data.url;
+    console.log(presignedUrl);
+    console.log(file.src);
+    const blobUrl=file.src
+    const blobResponse = await fetch(blobUrl);
+    if (!blobResponse.ok) {
+     throw new Error(`Failed to fetch blob: ${blobResponse.statusText}`);
+    }
+    const blob = await blobResponse.blob();
+    const fileName=file.title
+    const fileData = new File([blob], fileName, { type: "image/jpeg" });
+    console.log(fileData);
+    
+    const uploadResponse = await fetch(presignedUrl, {
+      method: "PUT",
+      body: fileData,
+    });
 
+    if (!uploadResponse.ok) {
+      throw new Error("File upload failed");
+    }
+    console.log(uploadResponse);
+    const uploadedImageUrl=`https://goexpertly-bucket.s3.amazonaws.com/${file.title}`
+    return uploadedImageUrl;
+  } catch (error) {
+    console.error("Error fetching pre-signed URL:", error);
+  }
+};
 const dataProvider = {
     getList: (resource, params) => {
         const { page, perPage } = params.pagination;
@@ -88,8 +120,12 @@ const dataProvider = {
         }).then(({ json }) => ({ data: json }));
     },
 
-    create: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}`, {
+    create: async (resource, params) =>{
+        if (params.data.pictures) {
+             const url = await uploadFile(params.data.pictures);
+            params.data.imageSrc = url; // Save the file URL instead of the file object
+             }
+       return httpClient(`${apiUrl}/${resource}`, {
             method: 'POST',
             body: JSON.stringify(params.data),
             headers:new Headers({
@@ -98,7 +134,7 @@ const dataProvider = {
             }),
         }).then(({ json }) => ({
             data: { ...params.data, id: json.id },
-        })),
+        }))},
 
     delete: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
