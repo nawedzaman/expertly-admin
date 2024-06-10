@@ -91,11 +91,9 @@ const Menu = ({ dense = false }: MenuProps) => {
                     dense={dense}
                 />
                 <MenuItemLink
-                    to="/categories"
+                    to="/coupons"
                     state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.categories.name`, {
-                        smart_count: 2,
-                    })}
+                    primaryText="Coupons"
                     leftIcon={<categories.icon />}
                     dense={dense}
                 />
