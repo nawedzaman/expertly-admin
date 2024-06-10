@@ -11,8 +11,8 @@ const authProvider: AuthProvider = {
             if (response.status === 200) {
               const { token } = response.data; // Replace with actual token structure
               // Securely store the token (e.g., HttpOnly cookie)
-              localStorage.setItem('authToken', token);
-              localStorage.setItem('username', username);
+              await localStorage.setItem('authToken', token);
+              await localStorage.setItem('username', username);
               return Promise.resolve(); // Login successful
             } else {
               throw new Error('Login failed: ' + response.statusText);

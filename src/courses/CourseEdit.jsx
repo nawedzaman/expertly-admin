@@ -10,6 +10,8 @@ const CourseEdit = (props) => (
       <ImageInput source="pictures" label="Related pictures">
         <ImageField source="src" title="title" />
       </ImageInput>
+      <p style={{ fontSize: '0.75em',color: 'grey' }}>Current Image</p>
+      <ImageField source="imageSrc" title="image"/>
       <NumberInput source="duration" label="Course Duration (in hours)" />
       <NumberInput source="price" label="Course Price" />
       <NumberInput source="discountedPrice" label="Discounted Price (optional)" />
