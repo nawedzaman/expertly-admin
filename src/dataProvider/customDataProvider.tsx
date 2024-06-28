@@ -3,9 +3,9 @@ import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 import axios from 'axios';
 const token = localStorage.getItem('authToken');
-const apiUrl = 'https://expertly.onrender.com/admin';
+const apiUrl = 'https://api.goexpertly.com/admin';
 const httpClient = fetchUtils.fetchJson;
-const uploadFile = async (file) => {
+const uploadPicture = async (file) => {
   try {
     const response = await axios.get(
       `${apiUrl}/presigned-url?filename=${file.title}`
@@ -32,12 +32,46 @@ const uploadFile = async (file) => {
       throw new Error("File upload failed");
     }
     console.log(uploadResponse);
-    const uploadedImageUrl=`https://goexpertly-bucket.s3.amazonaws.com/${file.title}`
+    const uploadedImageUrl=`https://goexpertly-bucket.s3.amazonaws.com/instructors/${file.title}`
     return uploadedImageUrl;
   } catch (error) {
     console.error("Error fetching pre-signed URL:", error);
   }
 };
+const uploadVideo = async (file) => {
+    console.log(file);
+    
+    try {
+      const response = await axios.get(
+        `${apiUrl}/presigned-url?filename=${encodeURIComponent(file.title)}&contentType=${encodeURIComponent('mp4')}`); // Replace with your API endpoint
+      const presignedUrl = response.data.url;
+      console.log(presignedUrl);
+      console.log(file.src);
+      const blobUrl=file.src
+      const blobResponse = await fetch(blobUrl);
+      if (!blobResponse.ok) {
+       throw new Error(`Failed to fetch blob: ${blobResponse.statusText}`);
+      }
+      const blob = await blobResponse.blob();
+      const fileName=file.title
+      const fileData = new File([blob], fileName, { type: 'mp4' });
+      console.log(fileData);
+      
+      const uploadResponse = await fetch(presignedUrl, {
+        method: "PUT",
+        body: fileData,
+      });
+  
+      if (!uploadResponse.ok) {
+        throw new Error("File upload failed");
+      }
+      console.log(uploadResponse);
+      const uploadedVideoUrl=`https://goexpertly-bucket.s3.amazonaws.com/WEBINARS/${file.title}`
+      return uploadedVideoUrl;
+    } catch (error) {
+      console.error("Error fetching pre-signed URL:", error);
+    }
+  };
 const dataProvider = {
     getList: (resource, params) => {
         const { page, perPage } = params.pagination;
@@ -108,7 +142,10 @@ const dataProvider = {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             }),
-        }).then(({ json }) => ({ data: json })),
+        }).then(({ json }) => {
+            json.id=json.id||json.courseID;
+            return{data: json} 
+        }),
 
     updateMany: (resource, params) => {
         const query = {
@@ -122,8 +159,12 @@ const dataProvider = {
 
     create: async (resource, params) =>{
         if (params.data.pictures) {
-             const url = await uploadFile(params.data.pictures);
+             const url = await uploadPicture(params.data.pictures);
             params.data.imageSrc = url; // Save the file URL instead of the file object
+             }
+        if (params.data.video) {
+            const url = await uploadVideo(params.data.video);
+            params.data.videoUrl = url;
              }
        return httpClient(`${apiUrl}/${resource}`, {
             method: 'POST',

@@ -9,7 +9,8 @@ import {
   TopToolbar,
   CreateButton,
   ExportButton,
-  DeleteButton
+  DeleteButton,
+  FunctionField
 } from "react-admin";
 
 const CourseList = () => {
@@ -24,7 +25,7 @@ const CourseList = () => {
       return (
     <List actions={<CourseListActions />}>
       <Datagrid rowClick="edit">
-        <ImageField source="imageSrc" />
+        <ImageField source="imageSrc" label="Image"/>
         <TextField source="title" />
         <TextField source="instructors" />
         <NumberField source="duration" />
@@ -36,8 +37,13 @@ const CourseList = () => {
           source="discountedPrice"
           options={{ style: "currency", currency: "USD" }}
         />
+        <DateField source="webinarDate" label="Webinar Date" />
         <NumberField source="rating" />
         <NumberField source="numReviews" />
+        <FunctionField 
+                label="Sites" 
+                render={record => record.Sites.map(site => site.name).join(', ')} 
+        />
         <DateField source="createdAt" />
         <DateField source="updatedAt" />
       </Datagrid>

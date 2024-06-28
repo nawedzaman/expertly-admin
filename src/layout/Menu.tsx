@@ -18,6 +18,8 @@ import products from '../products';
 import categories from '../categories';
 import reviews from '../reviews';
 import SubMenu from './SubMenu';
+import inquires from '../inquires';
+import recordings from '../recordings';
 
 type MenuName = 'menuCatalog' | 'menuSales' | 'menuCustomers';
 
@@ -64,15 +66,6 @@ const Menu = ({ dense = false }: MenuProps) => {
                     leftIcon={<orders.icon />}
                     dense={dense}
                 />
-                <MenuItemLink
-                    to="/invoices"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.invoices.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<invoices.icon />}
-                    dense={dense}
-                />
             </SubMenu>
             <SubMenu
                 handleToggle={() => handleToggle('menuCatalog')}
@@ -88,6 +81,13 @@ const Menu = ({ dense = false }: MenuProps) => {
                         smart_count: 2,
                     })}
                     leftIcon={<products.icon />}
+                    dense={dense}
+                />
+                                <MenuItemLink
+                    to="/recordings"
+                    state={{ _scrollToTop: true }}
+                    primaryText="Recordings"
+                    leftIcon={<recordings.icon />}
                     dense={dense}
                 />
                 <MenuItemLink
@@ -115,11 +115,9 @@ const Menu = ({ dense = false }: MenuProps) => {
                     dense={dense}
                 />
                 <MenuItemLink
-                    to="/segments"
+                    to="/inquires"
                     state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.segments.name`, {
-                        smart_count: 2,
-                    })}
+                    primaryText="Inquires"
                     leftIcon={<LabelIcon />}
                     dense={dense}
                 />

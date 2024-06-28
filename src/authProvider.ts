@@ -3,7 +3,7 @@ import axios from 'axios';
 const authProvider: AuthProvider = {
     login: async ({ username, password }) => {
         try {
-            const response = await axios.post('https://expertly.onrender.com/admin/login', {
+            const response = await axios.post('https://api.goexpertly.com/admin/login', {
               email:username,
               password,
             });

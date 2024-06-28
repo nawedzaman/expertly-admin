@@ -26,7 +26,9 @@ import courses from './courses';
 import users from './users';
 import enrolls from './enrolls';
 import coupons from './coupons';
+import recordings from './recordings';
 import { themes, ThemeName } from './themes/themes';
+import inquires from './inquires';
 
 const i18nProvider = polyglotI18nProvider(
     locale => {
@@ -81,6 +83,8 @@ const App = () => {
             <Resource name="users" {...users} />
             <Resource name="enrolls" {...enrolls} />
             <Resource name="coupons" {...coupons} />
+            <Resource name="inquires" {...inquires} />
+            <Resource name="recordings" {...recordings} />
         </Admin>
     );
 };

@@ -5,6 +5,7 @@ const UserEdit = ({ id, ...props }) => (
       <SimpleForm>
         <TextInput source="email" disabled /> {/* Display email but make it read-only */}
         <TextInput source="fullName" />
+        <TextInput source="phone" label="Phone Number" />
       </SimpleForm>
     </Edit>
   );
