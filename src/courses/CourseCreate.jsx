@@ -10,16 +10,26 @@ const websites = [
   { id: 1, name: 'goexpertly' },
   { id: 2, name: 'eductre' }
 ];
-const CourseCreate = (props) => (
-  <Create {...props}>
-    <SimpleForm>
-      <TextInput source="title" label="Course Title"/>
-      <RichTextInput source="description" label="Course Description" stripTags/>
+const CourseCreate = (props) => {
+  const validateCourse = (values) => {
+    const errors = {};
+    if (!values.siteId|| values.siteId.length === 0) {
+      errors.siteId = 'Please select at least one option.';
+    }
+    if (!values.description|| values.description.length === 0) {
+      errors.description = 'Course description is missing';
+    }
+     return errors;
+  };
+  return (<Create {...props}>
+    <SimpleForm validate={validateCourse}>
+      <TextInput source="title" label="Course Title" required="true"/>
+      <RichTextInput source="description" label="Course Description" stripTags required="true"/>
       <ImageInput source="pictures" label="Related pictures" accept="image/*" >
         <ImageField source="src" title="title" />
       </ImageInput>
-      <NumberInput source="duration" label="Course Duration (in hours)" />
-      <NumberInput source="price" label="Course Price" />
+      <NumberInput source="duration" label="Course Duration (in mins)" />
+      <NumberInput source="price" label="Course Price"  required="true"/>
       <NumberInput source="discountedPrice" label="Discounted Price (optional)" />
       <NumberInput source="rating" label="Initial Rating (optional)" />
       <NumberInput source="numReviews" label="Initial Number of Reviews (optional)" />
@@ -37,6 +47,6 @@ const CourseCreate = (props) => (
       <DateInput source="webinarDate" label="Webinar Date" />
     </SimpleForm>
   </Create>
-);
+)};
 
 export default CourseCreate;

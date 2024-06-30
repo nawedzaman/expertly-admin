@@ -7,20 +7,30 @@ const websites = [
 ];
 const CourseEdit = (props) => {
   const [siteId, setSiteId] = React.useState([]);
+  const validateCourse = (values) => {
+    const errors = {};
+    if (!values.siteId|| values.siteId.length === 0) {
+      errors.siteId = 'Please select at least one option.';
+    }
+    if (!values.description|| values.description.length === 0) {
+      errors.description = 'Course description is missing';
+    }
+     return errors;
+  };
   const handleCheckboxChange = (event) => {
     setSiteId(event.target.value); // Update siteId with selected values
   }
  return( <Edit {...props}>
-    <SimpleForm>
-      <TextInput source="title" label="Course Title" stripTags/>
-      <RichTextInput source="description" label="Course Description" stripTags/>
+    <SimpleForm validate={validateCourse}>
+      <TextInput source="title" label="Course Title" stripTags required="true"/>
+      <RichTextInput source="description" label="Course Description" stripTags required="true"/>
       <ImageInput source="pictures" label="Related pictures">
         <ImageField source="src" title="title" />
       </ImageInput>
       <p style={{ fontSize: '0.75em',color: 'grey' }}>Current Image</p>
       <ImageField source="imageSrc" title="image"/>
       <NumberInput source="duration" label="Course Duration (in hours)" />
-      <NumberInput source="price" label="Course Price" />
+      <NumberInput source="price" label="Course Price" required="true"/>
       <DateInput source="webinarDate" label="Webinar Date" />
       <NumberInput source="discountedPrice" label="Discounted Price (optional)" />
       <NumberInput source="rating" label="Initial Rating (optional)" />
