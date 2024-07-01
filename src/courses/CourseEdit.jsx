@@ -23,7 +23,7 @@ const CourseEdit = (props) => {
  return( <Edit {...props}>
     <SimpleForm validate={validateCourse}>
       <TextInput source="title" label="Course Title" stripTags required="true"/>
-      <RichTextInput source="description" label="Course Description" stripTags required="true"/>
+      <TextInput source="description" label="Course Description" stripTags required="true"/>
       <ImageInput source="pictures" label="Related pictures">
         <ImageField source="src" title="title" />
       </ImageInput>
@@ -48,9 +48,9 @@ const CourseEdit = (props) => {
           label="Sites" 
           render={record => record.Sites.map(site => site.name).join(', ')} 
         />
-      <RichTextInput source="features" label="Course Features" stripTags/>
-      <RichTextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
-      <RichTextInput source="content" label="Course Content"stripTags />
+      <TextInput source="features" label="Course Features" stripTags/>
+      <TextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
+      <TextInput source="content" label="Course Content"stripTags />
       <TextInput source="instructors" label="Instructors" stripTags/>
     </SimpleForm>
   </Edit>

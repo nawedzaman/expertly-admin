@@ -24,7 +24,7 @@ const CourseCreate = (props) => {
   return (<Create {...props}>
     <SimpleForm validate={validateCourse}>
       <TextInput source="title" label="Course Title" required="true"/>
-      <RichTextInput source="description" label="Course Description" stripTags required="true"/>
+      <TextInput source="description" label="Course Description" stripTags required="true"/>
       <ImageInput source="pictures" label="Related pictures" accept="image/*" >
         <ImageField source="src" title="title" />
       </ImageInput>
@@ -40,9 +40,9 @@ const CourseCreate = (props) => {
         optionText="name"
         optionValue="id"
       />
-      <RichTextInput source="features" label="Course Features" stripTags/>
-      <RichTextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
-      <RichTextInput source="content" label="Course Content" stripTags/>
+      <TextInput source="features" label="Course Features" stripTags/>
+      <TextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
+      <TextInput source="content" label="Course Content" stripTags/>
       <TextInput source="instructors" label="Instructors" />
       <DateInput source="webinarDate" label="Webinar Date" />
     </SimpleForm>

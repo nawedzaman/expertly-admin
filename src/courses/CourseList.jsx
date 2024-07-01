@@ -25,6 +25,7 @@ const CourseList = () => {
       return (
     <List actions={<CourseListActions />}>
       <Datagrid rowClick="edit">
+        <TextField source="courseID" label="ID"/>
         <ImageField source="imageSrc" label="Image"/>
         <TextField source="title" />
         <TextField source="instructors" />
