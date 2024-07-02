@@ -17,9 +17,10 @@ const RecordingCreate = () => {
         <FileInput source="video" label="Upload Recording">
           <FileField source="src" title="title" validate={[required()]} />
         </FileInput>
-        <ReferenceInput source="title" reference="courses">
+        <ReferenceInput source="courseId" reference="courses">
           <SelectInput 
-          optionText="title" resettable/>
+          optionText="title" 
+          optionValue="courseID"resettable/>
         </ReferenceInput>
       </SimpleForm>
     </Create>

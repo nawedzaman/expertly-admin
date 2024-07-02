@@ -108,11 +108,22 @@ const dataProvider = {
         }),
 
     getMany: (resource, params) => {
+        console.log("inside getMaany");
+        
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        return httpClient(url).then(({ json }) => ({ data: json }));
+        const url = `${apiUrl}/${resource}`;
+        return httpClient(url).then(({ json }) => { 
+            json = json.map(item => {
+                // Use courseID if id is not present
+                return {
+                    ...item,
+                    id: item.id || item.courseID
+                };
+            });
+            return {data:json};
+        });
     },
 
     getManyReference: (resource, params) => {
