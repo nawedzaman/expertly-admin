@@ -145,8 +145,16 @@ const dataProvider = {
         }));
     },
 
-    update: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`, {
+    update: async (resource, params) =>{
+        if (params.data.video) {
+            const url = await uploadVideo(params.data.video);
+            params.data.videoUrl = url;
+             }
+        if (params.data.pictures) {
+            const url = await uploadPicture(params.data.pictures);
+            params.data.imageSrc = url; // Save the file URL instead of the file object
+            }
+        return httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
             headers:new Headers({
@@ -155,8 +163,9 @@ const dataProvider = {
             }),
         }).then(({ json }) => {
             json.id=json.id||json.courseID;
-            return{data: json} 
-        }),
+            console.log({data: json});
+            return {data: json} 
+        })},
 
     updateMany: (resource, params) => {
         const query = {
