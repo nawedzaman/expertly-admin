@@ -60,7 +60,7 @@ const CourseEdit = (props) => {
       <TextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
       <TextInput source="content" label="Course Content"stripTags />
       <TextInput source="instructors" label="Instructors" stripTags/>
-      {/* <h2>Pricing Details</h2>
+      <h2>Pricing Details</h2>
         <ArrayField source="Pricings" label="Items in Promotion">
         <List dataSource="Pricings" hasCreate={false} hasEdit={true} hasDelete={true}>
         </List>
@@ -69,7 +69,7 @@ const CourseEdit = (props) => {
             <NumberField source="price" label="Price" />
             <TextField source="sessionType" label="Session Type" />
           </Datagrid>
-        </ArrayField> */}
+        </ArrayField>
     </SimpleForm>
   </Edit>
 )};
