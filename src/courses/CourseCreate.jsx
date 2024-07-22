@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Create, SimpleForm, TextInput, NumberInput, ImageInput, ImageField,CheckboxGroupInput,DateInput  } from 'react-admin';
+import { Create, SimpleForm, TextInput, NumberInput, ImageInput, ImageField,CheckboxGroupInput,DateInput,ArrayInput,SimpleFormIterator  } from 'react-admin';
 const RichTextInput = React.lazy(() =>
     import('ra-input-rich-text').then(module => ({
         default: module.RichTextInput,
@@ -8,7 +8,15 @@ const RichTextInput = React.lazy(() =>
 );
 const websites = [
   { id: 1, name: 'goexpertly' },
-  { id: 2, name: 'eductre' }
+  { id: 2, name: 'eductre' },
+  { id: 3, name: 'gradeage' },
+  { id: 4, name: 'theprofess' },
+  { id: 5, name: 'mytutorstation' },
+  { id: 6, name: 'wishlearners' },
+  { id: 7, name: 'wiservisions' },
+  { id: 8, name: 'meritcourses' },
+  { id: 9, name: 'learnyng' },
+  { id: 10, name: 'tutorshour' },
 ];
 const CourseCreate = (props) => {
   const validateCourse = (values) => {
@@ -45,6 +53,13 @@ const CourseCreate = (props) => {
       <TextInput source="content" label="Course Content" stripTags/>
       <TextInput source="instructors" label="Instructors" />
       <DateInput source="webinarDate" label="Webinar Date" />
+      <ArrayInput source="pricingData">
+        <SimpleFormIterator>
+          <NumberInput source="attendeeCount" label="Attendee Count" />
+          <NumberInput source="price" label="Price for this tier" />
+          <TextInput source="sessionType" label="Session Type" />
+        </SimpleFormIterator>
+      </ArrayInput>
     </SimpleForm>
   </Create>
 )};

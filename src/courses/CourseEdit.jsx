@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { Edit, SimpleForm, TextInput, NumberInput, CheckboxGroupInput , ImageInput, ImageField, EditButton, DeleteButton,FunctionField,DateInput } from 'react-admin';
+import { Edit, SimpleForm, TextInput, NumberInput, CheckboxGroupInput , ImageInput, ImageField, ArrayField, Datagrid,FunctionField,DateInput,NumberField,TextField,ReferenceField, TabbedForm,List } from 'react-admin';
 import { RichTextInput } from 'ra-input-rich-text'; // Assuming RichTextInput is imported correctly
 const websites = [
-  { id: "1", name: 'goexpertly' },
-  { id: "2", name: 'eductre' }
+  { id: 1, name: 'goexpertly' },
+  { id: 2, name: 'eductre' },
+  { id: 3, name: 'gradeage' },
+  { id: 4, name: 'theprofess' },
+  { id: 5, name: 'mytutorstation' },
+  { id: 6, name: 'wishlearners' },
+  { id: 7, name: 'wiservisions' },
+  { id: 8, name: 'meritcourses' },
+  { id: 9, name: 'learnyng' },
+  { id: 10, name: 'tutorshour' },
 ];
 const CourseEdit = (props) => {
   const [siteId, setSiteId] = React.useState([]);
@@ -52,6 +60,16 @@ const CourseEdit = (props) => {
       <TextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
       <TextInput source="content" label="Course Content"stripTags />
       <TextInput source="instructors" label="Instructors" stripTags/>
+      {/* <h2>Pricing Details</h2>
+        <ArrayField source="Pricings" label="Items in Promotion">
+        <List dataSource="Pricings" hasCreate={false} hasEdit={true} hasDelete={true}>
+        </List>
+          <Datagrid>
+            <NumberField source="attendeeCount" label="Attendee Count" />
+            <NumberField source="price" label="Price" />
+            <TextField source="sessionType" label="Session Type" />
+          </Datagrid>
+        </ArrayField> */}
     </SimpleForm>
   </Edit>
 )};
