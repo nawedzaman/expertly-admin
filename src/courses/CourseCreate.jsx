@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Create, SimpleForm, TextInput, NumberInput, ImageInput, ImageField,CheckboxGroupInput,DateInput,ArrayInput,SimpleFormIterator  } from 'react-admin';
+import { Create, SimpleForm, TextInput, NumberInput, ImageInput, ImageField,CheckboxGroupInput,DateTimeInput ,ArrayInput,SimpleFormIterator} from 'react-admin';
 const RichTextInput = React.lazy(() =>
     import('ra-input-rich-text').then(module => ({
         default: module.RichTextInput,
@@ -52,7 +52,7 @@ const CourseCreate = (props) => {
       <TextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
       <TextInput source="content" label="Course Content" stripTags/>
       <TextInput source="instructors" label="Instructors" />
-      <DateInput source="webinarDate" label="Webinar Date" />
+      <DateTimeInput  source="webinarDate" label="Webinar Date"/>
       <ArrayInput source="pricingData">
         <SimpleFormIterator>
           <NumberInput source="attendeeCount" label="Attendee Count" />
