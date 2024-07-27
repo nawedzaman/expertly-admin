@@ -43,6 +43,10 @@ const EnrollmentList = () => (
         render={(record) => record.Course.title}
       />
       <FunctionField
+        label="Session Type"
+        render={(record) => record.sessionType}
+      />
+      <FunctionField
         label="Invoice"
         render={(record) => {
           if (!record) return null; // Handle potential undefined record
