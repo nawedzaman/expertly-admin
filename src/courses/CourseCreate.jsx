@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Create, SimpleForm, TextInput, NumberInput, ImageInput, ImageField,CheckboxGroupInput,DateTimeInput ,ArrayInput,SimpleFormIterator} from 'react-admin';
+import { Create, SimpleForm, TextInput, NumberInput, ImageInput, ImageField,CheckboxGroupInput,DateTimeInput ,ArrayInput,SimpleFormIterator,BooleanInput  } from 'react-admin';
 const RichTextInput = React.lazy(() =>
     import('ra-input-rich-text').then(module => ({
         default: module.RichTextInput,
@@ -31,8 +31,8 @@ const CourseCreate = (props) => {
   };
   return (<Create {...props}>
     <SimpleForm validate={validateCourse}>
-      <TextInput source="title" label="Course Title" required="true"/>
-      <TextInput source="description" label="Course Description" stripTags required="true"/>
+      <TextInput source="title" label="Course Topic" required="true"/>
+      <RichTextInput source="description" label="Course Description" stripTags required="true"/>
       <ImageInput source="pictures" label="Related pictures" accept="image/*" >
         <ImageField source="src" title="title" />
       </ImageInput>
@@ -48,11 +48,17 @@ const CourseCreate = (props) => {
         optionText="name"
         optionValue="id"
       />
-      <TextInput source="features" label="Course Features" stripTags/>
-      <TextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
-      <TextInput source="content" label="Course Content" stripTags/>
-      <TextInput source="instructors" label="Instructors" />
+      <TextInput source="background" label="Course Background" stripTags/>
+      <RichTextInput source="who_will_benefit" label="Who Will Benefit" stripTags/>
+      <RichTextInput source="areas_covered" label="Area Covered" stripTags/>
+      <TextInput source="instructor" label="Instructor" />
       <DateTimeInput  source="webinarDate" label="Webinar Date"/>
+      <RichTextInput source="why_register" label="Why Register" stripTags/>
+      <TextInput source="level" label="Level" stripTags/>
+      <TextInput source="target_companies" label="Target Companies" stripTags/>
+      <TextInput source="target_association" label="Target Association" stripTags/>
+      <RichTextInput source="instructor_profile" label="Instructor Profile" stripTags/>
+      <BooleanInput source="archive" label="Archived" />
       <ArrayInput source="pricingData">
         <SimpleFormIterator>
           <NumberInput source="attendeeCount" label="Attendee Count" />

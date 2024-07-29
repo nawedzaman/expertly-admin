@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Edit, SimpleForm, TextInput, NumberInput, CheckboxGroupInput , ImageInput, ImageField, ArrayField, Datagrid,FunctionField,DateInput,NumberField,TextField,ReferenceField, TabbedForm,List } from 'react-admin';
+import { Edit, SimpleForm, TextInput, NumberInput, CheckboxGroupInput , ImageInput, ImageField, ArrayField, Datagrid,FunctionField,DateInput,NumberField,TextField,List,BooleanInput   } from 'react-admin';
 import { RichTextInput } from 'ra-input-rich-text'; // Assuming RichTextInput is imported correctly
 const websites = [
   { id: 1, name: 'goexpertly' },
@@ -30,8 +30,8 @@ const CourseEdit = (props) => {
   }
  return( <Edit {...props}>
     <SimpleForm validate={validateCourse}>
-      <TextInput source="title" label="Course Title" stripTags required="true"/>
-      <TextInput source="description" label="Course Description" stripTags required="true"/>
+      <TextInput source="title" label="Course Topic" stripTags required="true"/>
+      <RichTextInput source="description" label="Course Description" stripTags required="true"/>
       <ImageInput source="pictures" label="Related pictures">
         <ImageField source="src" title="title" />
       </ImageInput>
@@ -56,10 +56,17 @@ const CourseEdit = (props) => {
           label="Sites" 
           render={record => record.Sites.map(site => site.name).join(', ')} 
         />
-      <TextInput source="features" label="Course Features" stripTags/>
-      <TextInput source="what_you_will_learn" label="What You Will Learn" stripTags/>
-      <TextInput source="content" label="Course Content"stripTags />
-      <TextInput source="instructors" label="Instructors" stripTags/>
+      <TextInput source="background" label="Course Background" stripTags/>
+      <RichTextInput source="who_will_benefit" label="Who Will Benefit" stripTags/>
+      <RichTextInput source="areas_covered" label="Area Covered" stripTags/>
+      <TextInput source="instructor" label="Instructors" />
+      <RichTextInput source="why_register" label="Why Register" stripTags/>
+      <TextInput source="level" label="Level" stripTags/>
+      <TextInput source="target_companies" label="Target Companies" stripTags/>
+      <TextInput source="target_association" label="Target Association" stripTags/>
+      <RichTextInput source="instructor_profile" label="Instructor Profile" stripTags/>
+      <TextInput source="fees" label="Fees" stripTags/>
+      <BooleanInput source="archive" label="Archived" />
       <h2>Pricing Details</h2>
         <ArrayField source="Pricings" label="Items in Promotion">
         <List dataSource="Pricings" hasCreate={false} hasEdit={true} hasDelete={true}>
