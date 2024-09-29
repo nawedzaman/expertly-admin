@@ -28,7 +28,7 @@ const CourseList = () => {
         <TextField source="courseID" label="ID"/>
         <ImageField source="imageSrc" label="Image"/>
         <TextField source="title" />
-        <TextField source="instructors" />
+        <TextField source="instructor" />
         <NumberField source="duration" />
         <NumberField
           source="price"

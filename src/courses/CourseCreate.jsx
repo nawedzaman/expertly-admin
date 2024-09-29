@@ -13,10 +13,10 @@ const websites = [
   { id: 4, name: 'theprofess' },
   { id: 5, name: 'mytutorstation' },
   { id: 6, name: 'wishlearners' },
-  { id: 7, name: 'wiservisions' },
-  { id: 8, name: 'meritcourses' },
-  { id: 9, name: 'learnyng' },
-  { id: 10, name: 'tutorshour' },
+  { id: 7, name: 'studyassistants' },
+  { id: 8, name: 'tutorshour' },
+  { id: 9, name: 'wiservisions' },
+  // { id: 10, name: '' },
 ];
 const CourseCreate = (props) => {
   const validateCourse = (values) => {
@@ -58,7 +58,7 @@ const CourseCreate = (props) => {
       <TextInput source="target_companies" label="Target Companies" stripTags/>
       <TextInput source="target_association" label="Target Association" stripTags/>
       <RichTextInput source="instructor_profile" label="Instructor Profile" stripTags/>
-      <BooleanInput source="archive" label="Archived" />
+      <BooleanInput source="archieve" label="Archived" />
       <ArrayInput source="pricingData">
         <SimpleFormIterator>
           <NumberInput source="attendeeCount" label="Attendee Count" />

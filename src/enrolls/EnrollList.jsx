@@ -3,6 +3,7 @@ import {
   List,
   Datagrid,
   FunctionField,
+  DateField,
   EditButton,
   DeleteButton,
   Button,
@@ -16,14 +17,15 @@ const websites = [
   { id: 4, name: 'theprofess' },
   { id: 5, name: 'mytutorstation' },
   { id: 6, name: 'wishlearners' },
-  { id: 7, name: 'wiservisions' },
-  { id: 8, name: 'meritcourses' },
-  { id: 9, name: 'learnyng' },
-  { id: 10, name: 'tutorshour' },
+  { id: 7, name: 'studyassistants' },
+  { id: 8, name: 'tutorshour' },
+  { id: 9, name: 'wiservisions' },
+  { id: 10, name: 'meritcourses' },
 ];
 const EnrollmentList = () => (
   <List>
     <Datagrid>
+      <FunctionField label="OrderId" render={(record) => record.orderId} />
       <FunctionField label="User" render={(record) => record.User.fullName} />
       <FunctionField
         label="Email"
@@ -42,6 +44,13 @@ const EnrollmentList = () => (
         label="Course"
         render={(record) => record.Course.title}
       />
+      <FunctionField label="Payment Amount" render={(record) => record.actualPricePaid} />
+      <DateField source="Course.webinarDate" label="Webinar Date"/>
+      <FunctionField
+        label="Instructor"
+        render={(record) => record.Course.instructor}
+      />
+      <DateField showTime="true" source="createdAt" label="Enrolled At" />
       <FunctionField
         label="Session Type"
         render={(record) => record.sessionType}

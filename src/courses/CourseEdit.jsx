@@ -8,10 +8,10 @@ const websites = [
   { id: 4, name: 'theprofess' },
   { id: 5, name: 'mytutorstation' },
   { id: 6, name: 'wishlearners' },
-  { id: 7, name: 'wiservisions' },
-  { id: 8, name: 'meritcourses' },
-  { id: 9, name: 'learnyng' },
-  { id: 10, name: 'tutorshour' },
+  { id: 7, name: 'studyassistants' },
+  { id: 8, name: 'tutorshour' },
+  { id: 9, name: 'wiservisions' },
+  { id: 10, name: 'meritcourses' },
 ];
 const CourseEdit = (props) => {
   const [siteId, setSiteId] = React.useState([]);
@@ -66,7 +66,7 @@ const CourseEdit = (props) => {
       <TextInput source="target_association" label="Target Association" stripTags/>
       <RichTextInput source="instructor_profile" label="Instructor Profile" stripTags/>
       <TextInput source="fees" label="Fees" stripTags/>
-      <BooleanInput source="archive" label="Archived" />
+      <BooleanInput source="archieve" label="Archived" />
       <h2>Pricing Details</h2>
         <ArrayField source="Pricings" label="Items in Promotion">
         <List dataSource="Pricings" hasCreate={false} hasEdit={true} hasDelete={true}>
