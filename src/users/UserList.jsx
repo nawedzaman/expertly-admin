@@ -8,10 +8,10 @@ const websites = [
   { id: 4, name: 'theprofess' },
   { id: 5, name: 'mytutorstation' },
   { id: 6, name: 'wishlearners' },
-  { id: 7, name: 'wiservisions' },
-  { id: 8, name: 'meritcourses' },
-  { id: 9, name: 'learnyng' },
-  { id: 10, name: 'tutorshour' },
+  { id: 7, name: 'studyassistants' },
+  { id: 8, name: 'tutorshour' },
+  { id: 9, name: 'wiservisions' },
+  { id: 10, name: 'meritcourses' },
 ];
 const UserList = () => (
   <List >
