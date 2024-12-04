@@ -11,7 +11,14 @@ const websites = [
   { id: 7, name: 'studyassistants' },
   { id: 8, name: 'tutorshour' },
   { id: 9, name: 'wiservisions' },
-  { id: 10, name: 'meritcourses' },
+  { id: 10, name: 'eazyteach' },
+  { id: 11, name: 'substantile' },
+  { id: 12, name: 'skillvybe' },
+  { id: 13, name: 'coachavo' },
+  { id: 14, name: 'proficientme' },
+  { id: 15, name: 'classtron' },
+  { id: 16, name: 'workshopbay' },
+  { id: 17, name: 'crescenz' }
 ];
 const CourseEdit = (props) => {
   const [siteId, setSiteId] = React.useState([]);
