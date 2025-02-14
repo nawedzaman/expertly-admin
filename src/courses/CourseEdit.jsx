@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Edit, SimpleForm, TextInput, NumberInput, CheckboxGroupInput , ImageInput, ImageField, ArrayField, Datagrid,FunctionField,DateInput,NumberField,TextField,List,BooleanInput   } from 'react-admin';
+import { Edit, SimpleForm, TextInput, NumberInput, CheckboxGroupInput , ImageInput, ImageField, ArrayField, Datagrid,FunctionField,DateTimeInput,NumberField,TextField,List,BooleanInput   } from 'react-admin';
 import { RichTextInput } from 'ra-input-rich-text'; // Assuming RichTextInput is imported correctly
 const websites = [
   { id: 1, name: 'goexpertly' },
@@ -18,7 +18,8 @@ const websites = [
   { id: 14, name: 'proficientme' },
   { id: 15, name: 'classtron' },
   { id: 16, name: 'workshopbay' },
-  { id: 17, name: 'crescenz' }
+  { id: 17, name: 'crescenz' },
+  { id: 18, name: 'coachedly' }
 ];
 const CourseEdit = (props) => {
   const [siteId, setSiteId] = React.useState([]);
@@ -46,7 +47,7 @@ const CourseEdit = (props) => {
       <ImageField source="imageSrc" title="image"/>
       <NumberInput source="duration" label="Course Duration (in hours)" />
       <NumberInput source="price" label="Course Price" required="true"/>
-      <DateInput source="webinarDate" label="Webinar Date" />
+      <DateTimeInput source="webinarDate" label="Webinar Date" />
       <NumberInput source="discountedPrice" label="Discounted Price (optional)" />
       <NumberInput source="rating" label="Initial Rating (optional)" />
       <NumberInput source="numReviews" label="Initial Number of Reviews (optional)" />
