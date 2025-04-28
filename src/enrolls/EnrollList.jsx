@@ -28,7 +28,15 @@ const websites = [
   { id: 15, name: 'classtron' },
   { id: 16, name: 'workshopbay' },
   { id: 17, name: 'crescenz' },
-  { id: 18, name: 'coachedly' }
+  { id: 18, name: 'coachedly' },
+  { id: 19, name: 'securmo' },
+  { id: 20, name: 'wisearcs' },
+  { id: 21, name: 'wikilay' },
+  { id: 22, name: 'kodiqe' },
+  { id: 23, name: 'zenmatix' },
+  { id: 24, name: 'britewizard' },
+  { id: 25, name: 'higheringco' },
+  { id: 26, name: 'mindvalves' }
 ];
 const EnrollmentList = () => (
   <List>
